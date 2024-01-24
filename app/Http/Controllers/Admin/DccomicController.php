@@ -27,7 +27,7 @@ class DccomicController extends Controller
      */
     public function create()
     {
-        //
+        return view('dccomics.create');
     }
 
     /**
@@ -38,7 +38,12 @@ class DccomicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+        $dccomic = new Dccomic();
+        $dccomic->fill($form_data);
+        $dccomic->save();
+
+        return redirect()->route('dccomics.show', ['dccomic' => $dccomic->id]);
     }
 
     /**

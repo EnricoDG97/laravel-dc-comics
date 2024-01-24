@@ -4,7 +4,7 @@
     <div class="container mt-5">
 
         <h2 class="text-center">Lista DC Comics</h2>
-
+        <a href="{{route('dccomics.create')}}">Crea Nuovo DC Comic</a>
 
         <div class="row justify-content-center">
             <div class="col-10">
