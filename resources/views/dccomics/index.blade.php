@@ -8,6 +8,12 @@
             <a class="text-center" href="{{ route('dccomics.create') }}">Crea Nuovo DC Comic</a>
         </div>
 
+        @if (Session::has('message'))
+            <div class="alert alert-success mt-4">
+                {{ Session::get('message') }}
+            </div>
+        @endif
+
         <div class="row justify-content-center">
             <div class="col-10">
                 <table class="table table-striped">

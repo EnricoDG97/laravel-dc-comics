@@ -100,6 +100,6 @@ class DccomicController extends Controller
         $dccomic = Dccomic::findOrFail($id);
         // dd($dccomic);
         $dccomic->delete();
-        return redirect()->route('dccomics.index');
+        return redirect()->route('dccomics.index')->with('message', 'Il DC Comic ' . $dccomic->title . ' è stato eliminato.');
     }
 }
