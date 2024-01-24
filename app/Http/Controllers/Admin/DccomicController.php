@@ -43,6 +43,8 @@ class DccomicController extends Controller
         $dccomic->fill($form_data);
         $dccomic->save();
 
+        // pattern post-redirect-get
+        // perchè non ritorno la view? perchè la chiamata post non fa visualizzare
         return redirect()->route('dccomics.show', ['dccomic' => $dccomic->id]);
     }
 
@@ -66,7 +68,8 @@ class DccomicController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dccomic = Dccomic::findOrFail($id);
+        return view('dccomics.edit', compact('dccomic'));
     }
 
     /**
@@ -78,7 +81,11 @@ class DccomicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $form_data = $request->all();
+        $dccomic = Dccomic::findOrFail($id);
+        $dccomic->update($form_data);
+        // dd($dccomic);
+        return redirect()->route('dccomics.show', ['dccomic' => $dccomic->id]);
     }
 
     /**

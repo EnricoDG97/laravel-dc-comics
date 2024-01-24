@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container mt-5">
-    <h1>Welcome to laravel</h1>
+    <h1> HOMEPAGE </h1>
 </div>
 @endsection
