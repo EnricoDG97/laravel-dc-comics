@@ -40,7 +40,7 @@
                                         class="d-inline-block" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">
+                                        <button type="submit"data-title="{{ $dccomic->title }}" class="btn btn-danger btn-delete">
                                             Cancella
                                         </button>
                                     </form>
@@ -50,6 +50,8 @@
 
                     </tbody>
                 </table>
+
+                @include('partials.delete-modal')
             </div>
         </div>
     </div>
