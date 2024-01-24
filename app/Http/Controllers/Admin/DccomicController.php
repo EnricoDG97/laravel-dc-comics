@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Dccomic;
 use Illuminate\Http\Request;
 
 class DccomicController extends Controller
@@ -14,7 +15,9 @@ class DccomicController extends Controller
      */
     public function index()
     {
-        //
+        // ritorna la view con tutti gli elementi
+        $dccomics = Dccomic::all();
+        return view('dccomics.index', compact('dccomics'));
     }
 
     /**
