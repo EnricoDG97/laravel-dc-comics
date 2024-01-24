@@ -69,6 +69,7 @@ class DccomicController extends Controller
     public function edit($id)
     {
         $dccomic = Dccomic::findOrFail($id);
+        // dd($id);
         return view('dccomics.edit', compact('dccomic'));
     }
 
@@ -96,6 +97,9 @@ class DccomicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dccomic = Dccomic::findOrFail($id);
+        // dd($dccomic);
+        $dccomic->delete();
+        return redirect()->route('dccomics.index');
     }
 }

@@ -5,7 +5,7 @@
 
         <h2 class="text-center">Lista DC Comics</h2>
         <div class="container text-center">
-            <a class="text-center" href="{{route('dccomics.create')}}">Crea Nuovo DC Comic</a>
+            <a class="text-center" href="{{ route('dccomics.create') }}">Crea Nuovo DC Comic</a>
         </div>
 
         <div class="row justify-content-center">
@@ -26,8 +26,18 @@
                                 <td>{{ $dccomic->title }}</td>
                                 <td>{{ $dccomic->type }}</td>
                                 <td>
-                                    <a class="btn btn-success" href="{{route('dccomics.show', ['dccomic' => $dccomic->id])}}"> Dettagli </a>
-                                    <a class="btn btn-danger" href="{{route('dccomics.edit', ['dccomic' => $dccomic->id])}}"> Modifica </a>
+                                    <a class="btn btn-success"
+                                        href="{{ route('dccomics.show', ['dccomic' => $dccomic->id]) }}"> Dettagli </a>
+                                    <a class="btn btn-warning"
+                                        href="{{ route('dccomics.edit', ['dccomic' => $dccomic->id]) }}"> Modifica </a>
+                                    <form action="{{ route('dccomics.destroy', ['dccomic' => $dccomic->id]) }}"
+                                        class="d-inline-block" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">
+                                            Cancella
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
