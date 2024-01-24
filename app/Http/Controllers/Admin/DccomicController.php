@@ -49,7 +49,8 @@ class DccomicController extends Controller
      */
     public function show($id)
     {
-        //
+        $dccomic = Dccomic::findOrFail($id);
+        return view('dccomics.show', compact('dccomic'));
     }
 
     /**

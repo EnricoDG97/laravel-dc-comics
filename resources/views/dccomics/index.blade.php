@@ -23,7 +23,9 @@
                                 <th scope="row"> {{ $dccomic->id }}</th>
                                 <td>{{ $dccomic->title }}</td>
                                 <td>{{ $dccomic->type }}</td>
-                                <td></td>
+                                <td>
+                                    <a class="btn btn-success" href="{{route('dccomics.show', ['dccomic' => $dccomic->id])}}"> Dettagli </a>
+                                </td>
                             </tr>
                         @endforeach
 
