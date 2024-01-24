@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DccomicController;
 use App\Http\Controllers\Admin\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,4 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// route del home controller 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// route del gruppo di route del controller resource del Dccomic
+Route::resource('dccomics', DccomicController::class);
