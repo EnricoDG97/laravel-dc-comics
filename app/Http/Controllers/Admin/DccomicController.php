@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreDccomicRequest;
+use App\Http\Requests\UpdateDccomicRequest;
 use App\Models\Dccomic;
 use Illuminate\Http\Request;
 
@@ -36,9 +38,22 @@ class DccomicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDccomicRequest $request)
     {
-        $form_data = $request->all();
+        // $request->validate([
+        //     'title' => 'required|min:3|max:50',
+        //     'description' => 'nullable',
+        //     'thumb' => 'required',
+        //     'price' => 'required',
+        //     'series' => 'required',
+        //     'sale_date' => 'required',
+        //     'type' => 'required'
+        // ], [
+        //     'title.required' => 'Titolo obbligatiorio',
+        //     'title.min' => 'Titolo deve avere una lunghezza maggiore di :min caratteri'
+        // ]);
+
+        $form_data = $request->validated();
         $dccomic = new Dccomic();
         $dccomic->fill($form_data);
         $dccomic->save();
@@ -80,9 +95,9 @@ class DccomicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateDccomicRequest $request, $id)
     {
-        $form_data = $request->all();
+        $form_data = $request->validated();
         $dccomic = Dccomic::findOrFail($id);
         $dccomic->update($form_data);
         // dd($dccomic);
